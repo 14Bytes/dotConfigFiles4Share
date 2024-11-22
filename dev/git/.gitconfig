@@ -1,0 +1,46 @@
+# git config 文件位置有三处，分别是：
+#
+# 1. 全局配置：~/.gitconfig
+# 2. 仓库配置：[repository-path]/.git/config
+# 3. 系统配置：[git-path]/gitconfig
+#
+# 优先级关系为：仓库配置 > 全局配置 > 系统配置
+#
+# 获取默认配置，如果当前仓库地址中不存在，则先查看全局，再读取系统配置
+# git config --list
+#
+# 查看本地配置
+# git config --local --list
+#
+# 查看全局配置
+# git config --global --list
+#
+# 查看系统配置
+# git config --system --list
+#
+
+# 配置大小写敏感
+# git config --global core.ignorecase false
+# - true：大小写不敏感，即忽略大小写
+# - false：大小写敏感，即区分大小写
+[core]
+    ignorecase = false
+
+# 配置用户名和邮箱
+# git config --global user.name "your name"
+# git config --global user.email "your email"
+[user]
+    name = "J1nH4ng"
+    email = "J1nH4ng@icloud.com"
+
+# 配置指定仓库代理
+# git config --global http.<url>.proxy http://127.0.0.1:10809
+# git config --global http.<url>.proxy socks5://127.0.0.1:10808
+# - 只需要修改 <url> 内的内容即可
+# - 注意修改代理 ip 和端口为自己的设置
+[http "http://github.com"]
+    proxy = socks5://127.0.0.1:10808
+    # proxy = http://127.0.0.1:10809
+[http "https://github.com"]
+    proxy = socks5://127.0.0.1:10808
+    # proxy = http://127.0.0.1:10809
