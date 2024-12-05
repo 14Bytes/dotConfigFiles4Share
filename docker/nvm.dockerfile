@@ -22,10 +22,11 @@ nvm install 12.22.12 && \
 nvm install 14.21.3 && \
 nvm install 16.20.2 && \
 nvm install 18.20.5 && \
-nvm use 16.20.2"
+nvm use 16.20.2 && \
+nvm alias default 16.20.2"
 
-ENV NODE_PATH $NVM_DIR/versions/node/$(nvm ls | grep default | awk '{print $NF}')/lib/node_mudules
-ENV PATH $NVM_DIR/versions/node/$(nvm ls | grep default | awk ; '{print $NF}')/bin/:$PATH
+ENV NODE_PATH $NVM_DIR/versions/node/$(nvm ls | grep default | awk '{print $NF}' | head -n 1)/lib/node_mudules
+ENV PATH $NVM_DIR/versions/node/$(nvm ls | grep default | awk '{print $NF}' | head -n 1)/bin/:$PATH
 
 # 验证安装
 RUN node -v && npm -v
