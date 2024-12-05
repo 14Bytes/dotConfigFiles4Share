@@ -1,1 +1,1 @@
-# dotConfigFiles4Share
+# dot config files for Dev&Ops
