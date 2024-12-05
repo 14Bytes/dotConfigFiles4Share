@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 # 安装必要依赖
-RUN apk add --no-cache curl bash
+RUN apk add --no-cache curl bash gcompat libstdc++
 
 # 安装 NVM
 ENV NVM_VERSION=0.40.1
@@ -22,10 +22,6 @@ nvm install 12.22.12 && \
 nvm install 14.21.3 && \
 nvm install 16.20.2 && \
 nvm install 18.20.5 && \
-nvm use 16.20.2"
-
-ENV NODE_PATH $NVM_DIR/versions/node/$(nvm ls | grep default | awk '{print $NF}')/lib/node_mudules
-ENV PATH $NVM_DIR/versions/node/$(nvm ls | grep default | awk ; '{print $NF}')/bin/:$PATH
-
-# 验证安装
-RUN node -v && npm -v
+nvm use 16.20.2 && \
+nvm alias default 16.20.2 && \
+node -v && npm -v"
