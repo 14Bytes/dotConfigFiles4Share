@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 # 安装必要依赖
-RUN apk add --no-cache curl bash
+RUN apk add --no-cache curl bash gcompat libstdc++
 
 # 安装 NVM
 ENV NVM_VERSION=0.40.1
@@ -29,4 +29,6 @@ ENV NODE_PATH $NVM_DIR/versions/node/$(nvm ls | grep default | awk '{print $NF}'
 ENV PATH $NVM_DIR/versions/node/$(nvm ls | grep default | awk '{print $NF}' | head -n 1)/bin/:$PATH
 
 # 验证安装
-RUN node -v && npm -v
+RUN bash -c "source $NVM_DIR/nvm.sh && \
+node -v && \
+npm -v"
